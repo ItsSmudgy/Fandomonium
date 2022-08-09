@@ -79,6 +79,8 @@ namespace Fandomonium.Common.Systems.ParticleSystem
 
         public static void Update()
         {
+            if (Particles != null)
+            {
             foreach (Particle particle in Particles)
             {
                 particle.Position += particle.Velocity;
@@ -87,6 +89,7 @@ namespace Fandomonium.Common.Systems.ParticleSystem
             }
             Particles.RemoveAll((Particle particle) => (particle.LifeTime >= particle.MaxTime) || (ParticlesToBeKilled.Contains(particle)));
             ParticlesToBeKilled.Clear();
+            }
         }
 
         public static void KillParticle(Particle particle)
